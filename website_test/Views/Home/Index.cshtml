@@ -1,0 +1,24 @@
+﻿@model HomeModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<div>
+    <h2>Welcome to my very epic website.</h2>
+</div>
+<div>
+    @if (Model.RepoList != null)
+    {
+        <h2>here is a list of repos</h2>
+        foreach(var repo in Model.RepoList.AsArray())
+        {
+            <a href=@repo["html_url"].AsValue()>@repo["name"].ToString()</a>
+            <br />
+        }
+    }
+
+
+</div>
