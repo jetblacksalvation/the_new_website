@@ -4,21 +4,75 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 style=" text-align: center;">This is Home dir</h1>
 </div>
 <div>
     <h2>Welcome to my very epic website.</h2>
+    <h2> my name is eduardo dominguez</h2>
+    <h2> I am trying to be fullstack and eventually get into the game dev industry</h2>
+    <h2> professional dev for 1 year, programming since i was 14</h2>
+    <h2 style="text-align:right"> here is a picture of me</h2>
+
 </div>
-<div>
-    @if (Model.RepoList != null)
-    {
-        <h2>here is a list of repos</h2>
-        foreach(var repo in Model.RepoList.AsArray())
-        {
-            <a href=@repo["html_url"].AsValue()>@repo["name"].ToString()</a>
-            <br />
-        }
+    <style>
+        /* Apply styles to arrange the elements horizontally */
+        .container {
+            display: flex;
+            align-items: flex-start; /* Align items to the top of the container */
     }
 
+        /* Optional: Add more styling as needed */
+        table {
+            border-collapse: collapse;
+            width: 50%; /* Adjust the width as needed */
+            margin-right: 20px; /* Adjust the margin as needed */
+        }
 
-</div>
+        img {
+            max-width: 100%; /* Make sure the image doesn't exceed its container */
+            height: auto; /* Maintain the aspect ratio of the image */
+            margin-left: auto; /* Set margin-left to auto to push the image to the right */
+            display: block; /* Remove any default inline styling that may affect positioning */
+    }
+
+    }
+    </style>
+<head>
+    <h2>here is a list of repos</h2>
+
+    <div class="container">
+        @if (Model.RepoList != null)
+        {
+            <table bgcolor="#000000" border="1" cellpadding="10" >
+                <tr>
+                    <th> <a style="color :tomato">repo link</a></th>
+                    <th><a style="color :tomato">descirption</a> </th>
+                </tr>
+            @foreach(var repo in Model.RepoList.AsArray())
+            {
+
+                    <tr>
+                        <td>
+                            <a style="color:tomato" href=@repo["html_url"].AsValue()>@repo["name"].ToString()</a>
+                        </td>
+                        <td>
+
+                            <a style="color:tomato">
+                                @((string)(repo["description"]))
+                            </a>
+                        </td>
+                    </tr>
+            }
+            </table>
+
+        }
+        <img src="~/me.jpg" width="400"
+             height="500" style="object-fit:contain; align-items:right;" />
+
+    </div>
+</head>
+<hr />
+<h1 style="text-align: center;">directory</h1>
+<footer>
+    <a href="Pokemon">pokemonas</a>
+</footer>

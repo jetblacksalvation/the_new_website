@@ -20,3 +20,49 @@ html {
 body {
   margin-bottom: 60px;
 }
+.parent {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+#toppings {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: -10px;
+}
+
+    #toppings td, #toppings th {
+        border: 1px solid #ddd;
+        padding: 0px;
+        padding-top: 5px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    #toppings th {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        background-color: #000000;
+        color: white;
+    }
+
+#imgdiv {
+    float: left;
+}
+
+#datadiv {
+    float: right
+}
+
+#container {
+    display: inline-block
+}
