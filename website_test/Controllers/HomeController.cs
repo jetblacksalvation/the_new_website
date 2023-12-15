@@ -42,18 +42,37 @@ namespace website_test.Controllers
         {
             //Console.WriteLine(model?.ToString(), " is model");
             if (model == null) { return; }
-            HttpResponseMessage response = _client.Send(new(new HttpMethod("GET"), $"{_host}/users/jetblacksalvation/repos"));
-            //Console.Write(response.Content.ReadAsStringAsync().Result, " is the response");
-            var jNode = Helpers.MiscHelpers.CoalesceException(() => JsonNode.Parse(response.Content.ReadAsStringAsync().Result), null);
-            if (jNode != null)
+            JsonArray repos = new JsonArray();
+            for (var x = 1; x < 10; x++)
             {
-                //Console.Write(jNode.ToString(), "is content");
-                model.RepoList = jNode; 
+                HttpResponseMessage response = _client.Send(new(new HttpMethod("GET"), $"{_host}/users/jetblacksalvation/repos?page={x}&per_page=100"));
+                //Console.Write(response.Content.ReadAsStringAsync().Result, " is the response");
+                if (!response.IsSuccessStatusCode) { break; }
+                var jNode = Helpers.MiscHelpers.CoalesceException(() => JsonNode.Parse(response.Content.ReadAsStringAsync().Result), null);
+               
+                if (jNode != null && jNode.AsArray().Count > 0)
+                {
+                    //Console.Write(jNode.ToString(), "is content");
+                    foreach(var repo in jNode.AsArray())
+                    {
+                        JsonNode clonedRepo = MiscHelpers.CloneJsonNode(repo);
+
+                        repos.Add(clonedRepo);
+
+                    }
+                }
+                else
+                {
+                    break;
+                }
+                //foreach (var repo in model.RepoList.AsArray())
+                //{
+                //    Console.WriteLine(repo["html_url"].ToString(), ": ");
+                //}
             }
-            foreach(var repo in model.RepoList.AsArray())
-            {
-                Console.WriteLine(repo["html_url"].ToString(), ": ");
-            }
+            Console.Write(repos.ToString());
+            model.RepoList = repos;
+
         }
 
     }

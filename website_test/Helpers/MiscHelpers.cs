@@ -1,4 +1,6 @@
-﻿namespace website_test.Helpers
+﻿using System.Text.Json.Nodes;
+
+namespace website_test.Helpers
 {
     static public class MiscHelpers
     {
@@ -10,6 +12,12 @@
             }
             catch{ return defaultValue; }
         
+        }
+
+        public static JsonNode CloneJsonNode(JsonNode original)
+        {
+            var json = original.ToString();
+            return JsonNode.Parse(json);
         }
     }
 }
