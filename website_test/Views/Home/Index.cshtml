@@ -2,11 +2,67 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-<div class="text-center">
-    <h1 style=" text-align: center;">This is Home dir</h1>
-</div>
-<div>
+    .black-box {
+        background-color: black;
+        color: white; /* Set text color to contrast with the black background */
+        padding: 20px; /* Adjust padding as needed */
+        font-family:'Press Start 2P'
+    }
+
+        .black-box button, .black-box select {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px; /* Optional: Add spacing between buttons */
+        }
+
+        /* Style for the dropdown */
+        .black-box select {
+            appearance: none; /* Remove default appearance */
+
+            background-color: black;
+            color: white;
+            border-radius: 0; /* Remove border-radius for square corners */
+            padding: 8px; /* Adjust padding as needed */
+            cursor: pointer;
+        }
+</style>
+<body>
+    <div class="black-box" >
+        &lt;Directory&gt;
+        <button>Show Git</button>
+        <button>Show About Me</button>
+        <select id="coolThingsDropdown">
+            <option value="">Show Cool Things</option>
+            <option value="/rpg/">Option 1</option>
+            <option value="/AnotherPage/">Option 2</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById('coolThingsDropdown').addEventListener('change', function () {
+            var selectedValue = this.value;
+            if (selectedValue) {
+                window.location.href = selectedValue;
+            }
+        });
+    </script>
+
+</body>
+
+
+
+@* <div>
     <h2>Welcome to my very epic website.</h2>
     <h2> my name is eduardo dominguez</h2>
     <h2> I am trying to be fullstack and eventually get into the game dev industry</h2>
@@ -36,8 +92,8 @@
     }
 
     }
-    </style>
-<head>
+    </style> *@
+@* <head>
     <h2>here is a list of repos</h2>
 
     <div class="container">
@@ -70,9 +126,10 @@
              height="500" style="object-fit:contain; align-items:right;" />
 
     </div>
-</head>
-<hr />
+</head> *@
+@* <hr />
 <h1 style="text-align: center;">directory</h1>
 <footer>
     <a href="Pokemon">pokemonas</a>
 </footer>
+ *@

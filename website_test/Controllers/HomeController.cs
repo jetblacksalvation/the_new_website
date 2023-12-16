@@ -55,7 +55,8 @@ namespace website_test.Controllers
                     //Console.Write(jNode.ToString(), "is content");
                     foreach(var repo in jNode.AsArray())
                     {
-                        JsonNode clonedRepo = MiscHelpers.CloneJsonNode(repo);
+                        JsonNode clonedRepo = MiscHelpers.CloneJsonNode(repo);//jsonnodes are copied by referance
+
 
                         repos.Add(clonedRepo);
 

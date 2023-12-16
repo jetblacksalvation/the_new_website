@@ -10,4 +10,9 @@
     <_ContentIncludedByDefault Remove="wwwroot\epic_pc.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\dist\dist\assets\index-edd534bd.js" />
+    <None Include="wwwroot\js\dist\dist\vite.svg" />
+  </ItemGroup>
+
 </Project>
