@@ -2,42 +2,61 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
 
-    .black-box {
-        background-color: black;
-        color: white; /* Set text color to contrast with the black background */
-        padding: 20px; /* Adjust padding as needed */
-        font-family:'Press Start 2P'
-    }
-
-        .black-box button, .black-box select {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            margin-right: 10px; /* Optional: Add spacing between buttons */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
         }
 
-        /* Style for the dropdown */
-        .black-box select {
-            appearance: none; /* Remove default appearance */
-
+        .black-box {
             background-color: black;
             color: white;
-            border-radius: 0; /* Remove border-radius for square corners */
-            padding: 8px; /* Adjust padding as needed */
-            cursor: pointer;
+            padding: 20px;
+            font-family: 'Press Start 2P';
+            z-index: 1;
+            display: flex;
+            flex-direction: row; /* Align items in a row */
         }
-</style>
+
+            .black-box button, .black-box select {
+                background-color: black;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                margin-right: 10px;
+                z-index: 1;
+            }
+
+            .black-box select {
+                appearance: none;
+                background-color: black;
+                color: white;
+                border-radius: 0;
+                padding: 8px;
+                cursor: pointer;
+            }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+    </style>
+</head>
 <body>
-    <div class="black-box" >
+    <div class="black-box">
         &lt;Directory&gt;
         <button>Show Git</button>
         <button>Show About Me</button>
@@ -49,6 +68,8 @@
         </select>
     </div>
 
+    <div id="root"></div>
+
     <script type="text/javascript">
         document.getElementById('coolThingsDropdown').addEventListener('change', function () {
             var selectedValue = this.value;
@@ -58,21 +79,26 @@
         });
     </script>
 
-</body>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <script type="module" crossorigin>
+        // Your JavaScript logic for spawning a canvas with id "bg" goes here
+        const canvas = document.createElement('canvas');
+        canvas.id = 'bg';
+        document.getElementById('root').appendChild(canvas);
+    </script>
+
     <script type="module" crossorigin src="/js/animation/assets/index-0-ngzi7s.js"></script>
     <link rel="stylesheet" crossorigin href="/js/animation/assets/index-g-bggSZF.css">
-</head>
-<body>
-    <div id="root"></div>
 </body>
 </html>
+
+@* <!doctype html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+</body>
+</html> *@
 
 
 
