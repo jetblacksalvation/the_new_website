@@ -10,6 +10,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    @(await Html.RenderComponentAsync<website_test.Components.TestInput>(RenderMode.Server)); 
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
     <style>
 /*         body {
@@ -19,7 +21,7 @@
 
         .black-box {
             
-            background-color: TRA;
+            background-color: transparent;
             color: white;
             padding: 20px;
             font-family: 'Press Start 2P';

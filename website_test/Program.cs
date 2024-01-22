@@ -7,6 +7,12 @@ namespace website_test
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            //add blazor stuff
+            builder.Services.AddRazorComponents()
+            .AddInteractiveServerComponents();
+            builder.Services.AddServerSideBlazor();
+            //.AddInteractiveWebAssemblyComponents();
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -20,7 +26,7 @@ namespace website_test
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+       
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -40,7 +46,7 @@ namespace website_test
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            app.MapBlazorHub();
             app.Run();
         }
     }
